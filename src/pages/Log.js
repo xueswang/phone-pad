@@ -7,7 +7,7 @@ const Log = ({ logs }) => {
         const [number, position, stamp] = log;
         return (
           <div key={stamp} className="log">
-            <p>user clicked {number} at position {position} logged at {stamp}</p>
+            <p>user clicked {number} at position {position} logged with timestamp {stamp}</p>
           </div>
         );
       })}
