@@ -1,13 +1,143 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
+:root {
+  --white: #f4f1ec;
+  --silver: #d6d4d5;
+  --grey: #b7b5b6;
+  --lake: #5c9d95;
+  --grass: #b9cfcd;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--silver);
+  /* display: grid;
+  place-content: center; */
+}
+
+.container {
+  margin: 20vh auto;
+  padding: 1rem;
+  max-width: 30rem;
+  border-radius: 2.5rem;
+  /* background-image: linear-gradient(135deg, var(--white), var(--grey)); */
+  position: relative;
+  background: var(--silver);
+}
+
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1;
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--white),
+    var(--lake),
+    var(--silver)
+  );
+  border-radius: inherit;
+  animation: rotation 20s linear infinite;
+}
+
+.container::after {
+  filter: blur(3rem);
+}
+/* @media (width <= 600px) {
+  width: 100%;
+  aspect-ratio: 1/3;
+} */
+
+.panel {
+  background-color: var(--grey);
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 2px 4px 0px inset;
+  max-height: 25rem;
+  overflow: scroll;
+}
+
+.display {
+  min-height: 2rem;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+.key {
+  min-height: 3rem;
+  background-color: #f4f1ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+}
+
+.call {
+  margin-top: 0.5rem;
+  display: grid;
+  place-content: center;
+  background-color: var(--lake);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+}
+
+.history {
+  display: grid;
+  grid-template-columns: 3fr 1fr 0.5fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.history .delete {
+  font-size: 0.85rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  background-color: brown;
+  color: white;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  min-width: 3rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
